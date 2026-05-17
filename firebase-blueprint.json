@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "A lead generated from the settlement eligibility form",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "city": { "type": "string" },
+        "debtType": { "type": "string" },
+        "outstandingAmount": { "type": "string" },
+        "overdueStatus": { "type": "string" },
+        "hardshipReason": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "whatsapp", "city", "debtType", "outstandingAmount", "createdAt"]
+    },
+    "Config": {
+      "title": "Config",
+      "description": "System configuration and OAuth tokens",
+      "type": "object",
+      "properties": {
+        "googleRefreshToken": { "type": "string" },
+        "googleAccessToken": { "type": "string" },
+        "googleTokenExpiry": { "type": "number" },
+        "adminEmail": { "type": "string" },
+        "sheetId": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "leads": {
+      "schema": "Lead",
+      "description": "Collection of submitted leads"
+    },
+    "system": {
+      "schema": "Config",
+      "description": "System configuration (singleton)"
+    }
+  }
+}
